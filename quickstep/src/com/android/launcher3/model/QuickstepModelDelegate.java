@@ -189,37 +189,7 @@ public class QuickstepModelDelegate extends ModelDelegate implements OnIDPChange
     }
 
     @WorkerThread
-    private void recreatePredictors() {
-        destroyPredictors();
-        if (!mActive) {
-            return;
-        }
-        Context context = mApp.getContext();
-        AppPredictionManager apm = context.getSystemService(AppPredictionManager.class);
-        if (apm == null) {
-            return;
-        }
-
-        registerPredictor(mAllAppsState, apm.createAppPredictionSession(
-                new AppPredictionContext.Builder(context)
-                        .setUiSurface("home")
-                        .setPredictedTargetCount(mIDP.numDatabaseAllAppsColumns)
-                        .build()));
-
-        // TODO: get bundle
-        registerPredictor(mHotseatState, apm.createAppPredictionSession(
-                new AppPredictionContext.Builder(context)
-                        .setUiSurface("hotseat")
-                        .setPredictedTargetCount(mIDP.numDatabaseHotseatIcons)
-                        .setExtras(convertDataModelToAppTargetBundle(context, mDataModel))
-                        .build()));
-
-        registerWidgetsPredictor(apm.createAppPredictionSession(
-                new AppPredictionContext.Builder(context)
-                        .setUiSurface("widgets")
-                        .setPredictedTargetCount(NUM_OF_RECOMMENDED_WIDGETS_PREDICATION)
-                        .build()));
-    }
+    private void recreatePredictors() { }
 
     private void registerPredictor(PredictorState state, AppPredictor predictor) {
         state.predictor = predictor;

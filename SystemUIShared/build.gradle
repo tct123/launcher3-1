@@ -1,0 +1,48 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion COMPILE_SDK
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ["src"]
+            aidl.srcDirs = ["src"]
+            manifest.srcFile "AndroidManifest.xml"
+            res.srcDirs = ["res"]
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    addFramework()
+}
+
+dependencies {
+    compileOnly fileTree(dir: new File(rootProject.projectDir, "prebuilts/libs"), include: "wm_shell-aidls.jar")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}"
+    implementation fileTree(dir: new File(rootProject.projectDir, "prebuilts/libs"), include: "PluginCoreLib.jar")
+}
