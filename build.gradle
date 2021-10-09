@@ -8,7 +8,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath GRADLE_CLASS_PATH
+        classpath 'com.android.tools.build:gradle:7.0.2'
         classpath PROTOBUF_CLASS_PATH
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
     }
