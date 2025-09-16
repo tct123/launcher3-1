@@ -49,10 +49,10 @@ import com.android.launcher3.util.rule.ShellCommandRule;
 import com.android.launcher3.widget.LauncherAppWidgetProviderInfo;
 import com.android.launcher3.widget.WidgetManagerHelper;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import java.util.HashSet;
@@ -78,7 +78,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
     private int mSessionId = -1;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
 
@@ -90,7 +90,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
                 LauncherSettings.Settings.METHOD_CLEAR_EMPTY_DB_FLAG);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         if (mCursor != null) {
             mCursor.close();
@@ -101,7 +101,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testBindNormalWidget_withConfig() {
         LauncherAppWidgetProviderInfo info = TestViewHelpers.findWidgetProvider(this, true);
         LauncherAppWidgetInfo item = createWidgetInfo(info, getTargetContext(), true);
@@ -119,7 +119,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
         verifyWidgetPresent(info);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testUnboundWidget_removed() {
         LauncherAppWidgetProviderInfo info = TestViewHelpers.findWidgetProvider(this, false);
         LauncherAppWidgetInfo item = createWidgetInfo(info, getTargetContext(), false);
@@ -137,7 +137,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
         assertTrue("Widget exists", workspace.tryGetWidget(info.label, 0) == null);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testPendingWidget_autoRestored() {
         // A non-restored widget with no config screen gets restored automatically.
         LauncherAppWidgetProviderInfo info = TestViewHelpers.findWidgetProvider(this, false);
@@ -211,7 +211,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
         assertEquals(0, mCursor.getCount());
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testPendingWidget_notRestored_brokenInstall() {
         // A widget which is was being installed once, even if its not being
         // installed at the moment is not removed.
@@ -235,7 +235,7 @@ public class BindWidgetTest extends AbstractLauncherUiTest {
                         & LauncherAppWidgetInfo.FLAG_ID_NOT_VALID);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testPendingWidget_notRestored_activeInstall() throws Exception {
         // A widget which is being installed is not removed
         LauncherAppWidgetInfo item = getInvalidWidgetInfo();

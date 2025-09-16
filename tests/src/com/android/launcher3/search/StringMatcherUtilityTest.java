@@ -25,7 +25,7 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.android.launcher3.search.StringMatcherUtility.StringMatcher;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 /**
@@ -37,7 +37,7 @@ public class StringMatcherUtilityTest {
     private static final StringMatcher MATCHER =
             StringMatcher.getInstance();
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testMatches() {
         assertTrue(matches("white ", "white cow", MATCHER));
         assertTrue(matches("white c", "white cow", MATCHER));

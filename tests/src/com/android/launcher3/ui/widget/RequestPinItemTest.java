@@ -45,9 +45,9 @@ import com.android.launcher3.util.Wait.Condition;
 import com.android.launcher3.util.rule.ScreenRecordRule.ScreenRecord;
 import com.android.launcher3.util.rule.ShellCommandRule;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import java.util.UUID;
@@ -67,17 +67,17 @@ public class RequestPinItemTest extends AbstractLauncherUiTest {
     private int mAppWidgetId;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         super.setUp();
         mCallbackAction = UUID.randomUUID().toString();
         mShortcutId = UUID.randomUUID().toString();
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testEmpty() throws Throwable { /* needed while the broken tests are being fixed */ }
 
-    @Test
+    @org.junit.jupiter.api.Test
     @ScreenRecord  //b/192010616
     public void testPinWidgetNoConfig() throws Throwable {
         runTest("pinWidgetNoConfig", true, (info, view) -> info instanceof LauncherAppWidgetInfo &&
@@ -86,7 +86,7 @@ public class RequestPinItemTest extends AbstractLauncherUiTest {
                         .equals(AppWidgetNoConfig.class.getName()));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     @ScreenRecord  //b/192005114
     public void testPinWidgetNoConfig_customPreview() throws Throwable {
         // Command to set custom preview
@@ -100,7 +100,7 @@ public class RequestPinItemTest extends AbstractLauncherUiTest {
                         .equals(AppWidgetNoConfig.class.getName()), command);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testPinWidgetWithConfig() throws Throwable {
         runTest("pinWidgetWithConfig", true,
                 (info, view) -> info instanceof LauncherAppWidgetInfo &&

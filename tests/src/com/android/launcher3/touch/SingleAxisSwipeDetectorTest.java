@@ -40,8 +40,8 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.android.launcher3.testcomponent.TouchEventGenerator;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -65,7 +65,7 @@ public class SingleAxisSwipeDetectorTest {
     @Mock
     private ViewConfiguration mMockConfig;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         mGenerator = new TouchEventGenerator((ev) -> mDetector.onTouchEvent(ev));

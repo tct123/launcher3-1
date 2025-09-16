@@ -31,7 +31,7 @@ import com.android.launcher3.util.rule.ShellCommandRule;
 import com.android.launcher3.widget.LauncherAppWidgetProviderInfo;
 
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 /**
@@ -78,7 +78,7 @@ public class AddWidgetTest extends AbstractLauncherUiTest {
      * A custom shortcut is a 1x1 widget that launches a specific intent when user tap on it.
      * Custom shortcuts are replaced by deep shortcuts after api 25.
      */
-    @Test
+    @org.junit.jupiter.api.Test
     @PortraitLandscape
     public void testDragCustomShortcut() throws Throwable {
         clearHomescreen();

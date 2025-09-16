@@ -22,10 +22,10 @@ import static org.junit.Assert.assertTrue;
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
@@ -41,12 +41,12 @@ public class RaceConditionReproducerTest {
 
     RaceConditionReproducer eventProcessor;
 
-    @Before
+    @BeforeEach
     public void setup() {
         eventProcessor = new RaceConditionReproducer();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         TraceHelperForTest.cleanup();
     }
@@ -66,8 +66,8 @@ public class RaceConditionReproducerTest {
         tb.join();
     }
 
-    @Test
-    @Ignore // The test is too long for continuous testing.
+    @org.junit.jupiter.api.Test
+    @Disabled // The test is too long for continuous testing.
     // 2 threads, 3 events each.
     public void test3_3() throws Exception {
         boolean sawTheValidSequence = false;
@@ -89,8 +89,8 @@ public class RaceConditionReproducerTest {
         assertTrue(sawTheValidSequence);
     }
 
-    @Test
-    @Ignore // The test is too long for continuous testing.
+    @org.junit.jupiter.api.Test
+    @Disabled // The test is too long for continuous testing.
     // 2 threads, 3 events, including enter-exit pairs each.
     public void test3_3_enter_exit() throws Exception {
         boolean sawTheValidSequence = false;
@@ -141,7 +141,7 @@ public class RaceConditionReproducerTest {
     }
 
     @Test
-    @Ignore // The test is too long for continuous testing.
+    @Disabled // The test is too long for continuous testing.
     // 2 threads with 2 events; 1 thread with 1 event.
     public void test2_1_2() throws Exception {
         for (; ; ) {
@@ -172,7 +172,7 @@ public class RaceConditionReproducerTest {
     }
 
     @Test
-    @Ignore // The test is too long for continuous testing.
+    @Disabled // The test is too long for continuous testing.
     // 2 threads with 2 events; 1 thread with 1 event. Includes enter-exit pairs.
     public void test2_1_2_enter_exit() throws Exception {
         for (; ; ) {

@@ -28,8 +28,8 @@ import com.android.launcher3.LauncherState;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.ui.AbstractLauncherUiTest;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
 
 import java.util.UUID;
@@ -53,7 +53,7 @@ public class PromiseIconUiTest extends AbstractLauncherUiTest {
         mSessionId = -1;
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         if (mSessionId > -1) {
             mTargetContext.getPackageManager().getPackageInstaller().abandonSession(mSessionId);
