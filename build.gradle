@@ -36,9 +36,11 @@ allprojects {
 }
 
 apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.google.protobuf"
 
 android {
+    namespace "de.cmg.mylauncher"
     compileSdkVersion COMPILE_SDK
 
     defaultConfig {
@@ -48,7 +50,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        applicationId 'de.cmg.mylauncher'
     }
 
     buildTypes {
@@ -167,7 +168,7 @@ dependencies {
     implementation fileTree(dir: "prebuilts/libs", include: "launcher_quickstep_log_protos_lite.jar")
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation "androidx.slice:slice-core:1.1.0-alpha02"
-    implementation "com.github.ChickenHook:RestrictionBypass:2.4.2"
+    implementation 'com.github.ChickenHook:RestrictionBypass:2.2'
     implementation "androidx.dynamicanimation:dynamicanimation:1.1.0"
     implementation "androidx.recyclerview:recyclerview:1.4.0"
     implementation "androidx.preference:preference:1.2.1"
