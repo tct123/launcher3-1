@@ -1,15 +1,15 @@
 buildscript {
     ext {
         protocVersion = "3.18.0"
-        kotlinVersion = "1.5.31"
+        kotlinVersion = '1.6.21'
     }
     repositories {
         mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
-        classpath PROTOBUF_CLASS_PATH
+        classpath 'com.android.tools.build:gradle:8.13.0'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.9.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
     }
 }
@@ -40,7 +40,6 @@ apply plugin: "com.google.protobuf"
 
 android {
     compileSdkVersion COMPILE_SDK
-    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         minSdkVersion 25

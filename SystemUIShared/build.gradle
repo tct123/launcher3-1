@@ -3,13 +3,10 @@ apply plugin: "kotlin-android"
 
 android {
     compileSdkVersion COMPILE_SDK
-    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         minSdkVersion 28
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
     }
 
     sourceSets {
@@ -21,9 +18,6 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
 
     tasks.withType(JavaCompile) {
         options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
@@ -39,6 +33,9 @@ android {
     }
 
     addFramework()
+    lint {
+        abortOnError false
+    }
 }
 
 dependencies {
